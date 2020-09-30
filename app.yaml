@@ -12,6 +12,6 @@
 # limitations under the License.
 
 # [START gae_quickstart_yaml]
-runtime: nodejs12
+runtime: nodejs12,
 nodemon: 2.0.4
 # [END gae_quickstart_yaml]
