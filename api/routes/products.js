@@ -4,10 +4,14 @@ const router = express.Router();
  const mySqlConnection = require("../db/connection");
 
 router.get('/',(req,res,next)=>{
-    mySqlConnection.query("select * from Products",(err,rows,fields) => {
+    mySqlConnection.query("CALL AllProducts()",(err,rows,fields) => {
         if(!err)
-        {            
-            res.status(200).send(rows);
+        {  
+            let productResponse={"products":rows[0]};
+            let brandResponse={"Brands":rows[1]};
+            let categoriesResponse={"Categories":rows[2]};
+            let response =[productResponse,brandResponse,categoriesResponse];
+            res.status(200).send(response);
         }else
         {
             console.log(err);
