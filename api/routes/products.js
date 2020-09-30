@@ -18,6 +18,23 @@ router.get('/',(req,res,next)=>{
         }
 });
 });
+
+router.get('/:productid',(req,res,next)=>{
+    id =req.params.productid;
+    mySqlConnection.query("CALL GetProduct(?)",[id],(err,rows,fields) => {
+        if(!err)
+        {  
+            let productResponse={"products":rows[0]};
+            let brandResponse={"Brands":rows[1]};
+            let categoriesResponse={"Categories":rows[2]};
+            let response =[productResponse,brandResponse,categoriesResponse];
+            res.status(200).send(response);
+        }else
+        {
+            console.log(err);
+        }
+});
+});
 router.post('/',(req,res,next)=>{
     res.status(200).json({
         message:"Message from post Route"
