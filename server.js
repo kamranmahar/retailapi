@@ -2,7 +2,7 @@ const http = require('http');
 const app = require('./app');
 require('dotenv').config();
 
-const port = process.env.Port;
+const port = 4001;
 
 const server = http.createServer(app);
 // app.use((req,res,next) => {
@@ -10,7 +10,7 @@ const server = http.createServer(app);
 //         message :"Response from App"
 //     });
 // });
-console.log('Server is Listning  on port ',process.env.Port );
+console.log('Server is Listning  on port ',port);
 server.listen(port);
 
 // const express = require("express");
