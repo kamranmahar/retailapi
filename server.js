@@ -2,7 +2,7 @@ const http = require('http');
 const app = require('./app');
 require('dotenv').config();
 
-const port = 4001;
+const port = 4002;
 
 const server = http.createServer(app);
 // app.use((req,res,next) => {
