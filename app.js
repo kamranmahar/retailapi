@@ -5,7 +5,7 @@ const morgan =require('morgan');
 const bodyParser = require("body-parser");
 const categoriesRoutes=  require("./api/routes/categories");
 const productRoutes = require("./api/routes/products");
-
+const brandRoutes = require("./api/routes/brands");
 app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({extended : false}));
@@ -27,6 +27,7 @@ app.use(bodyParser.json());
 // });
 
 
+app.use("/brands",brandRoutes);
 app.use("/categories",categoriesRoutes);
 app.use("/products",productRoutes);
 app.use("/",(req,res,next)=>{
