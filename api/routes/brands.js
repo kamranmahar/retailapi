@@ -3,7 +3,7 @@ const router = express.Router();
 const mySqlConnection = require("../db/connection");
 
 router.get('/',(req,res,next) => {
-    mySqlConnection.query("select * from Brands",(err,rows,fields) => {
+    mySqlConnection.query("select * from brands",(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).send(rows);
@@ -42,7 +42,7 @@ router.put('/',(req,res,next) => {
 });
 router.get('/:brandid',(req,res,next)=>{
     id =req.params.brandid;
-    mySqlConnection.query("select * from Brands where ID=?",[id],(err,rows,fields) => {
+    mySqlConnection.query("select * from brands where brandid=?",[id],(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).send(rows);
@@ -55,7 +55,7 @@ router.get('/:brandid',(req,res,next)=>{
 });
 router.patch('/:brandid',(req,res,next)=>{
     id =req.params.brandid;
-    mySqlConnection.query("select * from Brands where ID="+id,(err,rows,fields) => {
+    mySqlConnection.query("select * from brands where brandid="+id,(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).send(rows);
@@ -69,7 +69,7 @@ router.patch('/:brandid',(req,res,next)=>{
 
 router.delete('/:brandid',(req,res,next)=>{
     id =req.params.brandid;
-    mySqlConnection.query("Delete from Brands where ID=?",[id],(err,rows,fields) => {
+    mySqlConnection.query("Delete from brands where brandid=?",[id],(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).json({
