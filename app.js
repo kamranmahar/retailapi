@@ -29,6 +29,11 @@ app.use(bodyParser.json());
 
 app.use("/categories",categoriesRoutes);
 app.use("/products",productRoutes);
+app.use("/",(req,res,next)=>{
+    res.status(200).json({
+        message:"Welcome to xConsol Retail Api"
+    });
+});
 
 app.use((req,res,next) => {
     const error = Error("Not Found");
