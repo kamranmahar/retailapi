@@ -3,7 +3,7 @@ const router = express.Router();
 const mySqlConnection = require("../db/connection");
 
 router.get('/',(req,res,next) => {
-    mySqlConnection.query("select * from Categories",(err,rows,fields) => {
+    mySqlConnection.query("select * from categories",(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).send(rows);
@@ -42,7 +42,7 @@ router.put('/',(req,res,next) => {
 });
 router.get('/:categoryid',(req,res,next)=>{
     id =req.params.categoryid;
-    mySqlConnection.query("select * from Categories where ID=?",[id],(err,rows,fields) => {
+    mySqlConnection.query("select * from categories where categoryid=?",[id],(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).send(rows);
@@ -55,7 +55,7 @@ router.get('/:categoryid',(req,res,next)=>{
 });
 router.patch('/:categoryid',(req,res,next)=>{
     id =req.params.categoryid;
-    mySqlConnection.query("select * from Categories where ID="+id,(err,rows,fields) => {
+    mySqlConnection.query("select * from categories where categoryid="+id,(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).send(rows);
@@ -69,7 +69,7 @@ router.patch('/:categoryid',(req,res,next)=>{
 
 router.delete('/:categoryid',(req,res,next)=>{
     id =req.params.categoryid;
-    mySqlConnection.query("Delete from Categories where ID=?",[id],(err,rows,fields) => {
+    mySqlConnection.query("Delete from categories where categoryid=?",[id],(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).json({
