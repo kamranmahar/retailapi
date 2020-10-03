@@ -3,7 +3,7 @@ const app = express();
 var cors = require('cors');
 const morgan =require('morgan');
 const bodyParser = require("body-parser");
-//const brandRoutes = require("./api/routes/brands");
+const brandRoutes = require("./api/routes/brands");
 const categoriesRoutes=  require("./api/routes/categories");
 const productRoutes = require("./api/routes/products");
 
@@ -28,14 +28,14 @@ app.use(bodyParser.json());
 // });
 
 
-//app.use("/brands",brandRoutes);
+app.use("/brands",brandRoutes);
 app.use("/categories",categoriesRoutes);
 app.use("/products",productRoutes);
-// app.use("/",(req,res,next)=>{
-//     res.status(200).json({
-//         message:"Welcome to xConsol Retail Api"
-//     });
-// });
+app.use("/",(req,res,next)=>{
+    res.status(200).json({
+        message:"Welcome to xConsol Retail Api"
+    });
+});
 
 app.use((req,res,next) => {
     const error = Error("Not Found");
