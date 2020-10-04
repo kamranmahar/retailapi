@@ -17,7 +17,8 @@ router.get('/',(req,res,next) => {
 router.post('/',(req,res,next) => {
     let category = req.body;
     let strquery="CALL AddCategory(?,?,?,?,?);";
-    mySqlConnection.query(strquery,[category.categoryid,category.name,category.description,category.slug,category.thumbnail],(err,rows,fields) => {
+    const categoryid=0;
+    mySqlConnection.query(strquery,[categoryid,category.name,category.description,category.slug,category.thumbnail],(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).send(rows);
