@@ -17,7 +17,7 @@ router.get('/',(req,res,next) => {
 router.post('/',(req,res,next) => {
     let category = req.body;
     let strquery="CALL AddCategory(?,?,?,?,?);";
-    mySqlConnection.query(strquery,[category.ID,category.Name,category.Description,category.Slug,category.Thumbnail],(err,rows,fields) => {
+    mySqlConnection.query(strquery,[category.categoryid,category.name,category.description,category.slug,category.thumbnail],(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).send(rows);
@@ -30,7 +30,7 @@ router.post('/',(req,res,next) => {
 router.put('/',(req,res,next) => {
     let category = req.body;
     let strquery="CALL AddCategory(?,?,?,?,?);";
-    mySqlConnection.query(strquery,[category.ID,category.Name,category.Description,category.Slug,category.Thumbnail],(err,rows,fields) => {
+    mySqlConnection.query(strquery,[category.categoryid,category.name,category.description,category.slug,category.thumbnail],(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).send(rows);
