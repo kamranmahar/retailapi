@@ -16,9 +16,9 @@ router.get('/',(req,res,next) => {
 
 router.post('/',(req,res,next) => {
     let category = req.body;
-    let strquery="CALL AddCategory(?,?,?,?,?);";
+    let strquery="CALL AddCategory(?,?,?,?,?,?);";
     const categoryid=0;
-    mySqlConnection.query(strquery,[categoryid,category.name,category.description,category.slug,category.thumbnail],(err,rows,fields) => {
+    mySqlConnection.query(strquery,[categoryid,category.name,category.description,category.slug,category.thumbnail,category.parent],(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).send(rows);
@@ -30,8 +30,8 @@ router.post('/',(req,res,next) => {
 });
 router.put('/',(req,res,next) => {
     let category = req.body;
-    let strquery="CALL AddCategory(?,?,?,?,?);";
-    mySqlConnection.query(strquery,[category.categoryid,category.name,category.description,category.slug,category.thumbnail],(err,rows,fields) => {
+    let strquery="CALL AddCategory(?,?,?,?,?,?);";
+    mySqlConnection.query(strquery,[category.categoryid,category.name,category.description,category.slug,category.thumbnail,category.parent],(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).send(rows);
