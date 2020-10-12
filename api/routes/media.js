@@ -3,7 +3,7 @@ const router = express.Router();
 const mySqlConnection = require("../db/connection");
 
 router.get('/',(req,res,next) => {
-    mySqlConnection.query("select * from brands",(err,rows,fields) => {
+    mySqlConnection.query("select * from media",(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).send(rows);
@@ -43,9 +43,9 @@ router.put('/',(req,res,next) => {
         }
 });
 });
-router.get('/:brandid',(req,res,next)=>{
-    id =req.params.brandid;
-    mySqlConnection.query("select * from brands where brandid=?",[id],(err,rows,fields) => {
+router.get('/:mediaid',(req,res,next)=>{
+    id =req.params.mediaid;
+    mySqlConnection.query("select * from media where mediaid=?",[id],(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).send(rows);
@@ -56,9 +56,9 @@ router.get('/:brandid',(req,res,next)=>{
 });
 
 });
-router.patch('/:brandid',(req,res,next)=>{
-    id =req.params.brandid;
-    mySqlConnection.query("select * from brands where brandid="+id,(err,rows,fields) => {
+router.patch('/:mediaid',(req,res,next)=>{
+    id =req.params.mediaid;
+    mySqlConnection.query("select * from brands where mediaid="+id,(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).send(rows);
@@ -72,7 +72,7 @@ router.patch('/:brandid',(req,res,next)=>{
 
 router.delete('/:brandid',(req,res,next)=>{
     id =req.params.brandid;
-    mySqlConnection.query("Delete from brands where brandid=?",[id],(err,rows,fields) => {
+    mySqlConnection.query("Delete from brands where mediaid=?",[id],(err,rows,fields) => {
         if(!err)
         {            
             res.status(200).json({
